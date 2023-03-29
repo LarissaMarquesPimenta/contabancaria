@@ -1,5 +1,7 @@
 package conta;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import conta.util.Cores;
@@ -55,7 +57,14 @@ public class Menu {
 		System.out.println("|                                     |");
 		System.out.println(" ------------------------------------- " + Cores.TEXT_RESET);
 	
-		opcao = leia.nextInt();
+		
+		try{opcao = leia.nextInt(); }
+		catch (InputMismatchException e) {
+			System.out.println("\n Digite valores inteiros.");
+			leia.nextLine();
+			opcao = 0;
+			
+		}
 		
 		if (opcao == 9) {
 			System.out.println(Cores.TEXT_WHITE_BOLD + "Agradecemos a preferência, volte sempre!");
@@ -100,9 +109,20 @@ public class Menu {
 			
 		}
 		
-		}
+		}}
 		
-		
+		public static void keyPress() {
+
+			try {
+
+				System.out.println(Cores.TEXT_RESET + "\nPressione enter para continuar.");
+				System.in.read();
+
+			} catch (IOException e) {
+
+				System.out.println("Você pressionou uma tecla diferente de enter!");
+
+			}
 
 	}
 	
